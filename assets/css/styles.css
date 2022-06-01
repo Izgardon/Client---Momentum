@@ -1,0 +1,27 @@
+:root {
+  --grey: #2d3032;
+  --white: #d2d3d3;
+  --purple: #9615db;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin-block: 0;
+  margin-inline: 0;
+}
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Helper classes */
+
+.hidden {
+  display: none;
+}
+
+.flex {
+  display: flex;
+}

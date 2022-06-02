@@ -61,6 +61,7 @@ body {
     animation: anim#{$i} 12s infinite linear;
     animation-delay: $i * -($time/$total);
     opacity: 0;
+    z-index: 5;
   }
 
   @keyframes anim#{$i} {
@@ -126,7 +127,6 @@ form {
   transform: translateX(-50%);
   padding: 20px 0;
   transition: left 0.5s ease;
-  z-index: 2;
 }
 input {
   display: block;
@@ -198,8 +198,6 @@ select {
 
   border-radius: 3px;
   padding: 10px 15px;
-
-  z-index: 1;
 
   &::-ms-expand {
     display: none;

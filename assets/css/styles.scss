@@ -1,0 +1,272 @@
+$grey: #2d3032;
+$white: #d2d3d3;
+$purple: #9615db;
+$total: 100;
+$time: 10s;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin-block: 0;
+  margin-inline: 0;
+}
+html,
+body,
+.wrap {
+  height: 100%;
+  width: 100%;
+  color: $white;
+}
+
+body {
+  background: black;
+  background-image: radial-gradient(
+    circle at center,
+
+    #3e025e 0%,
+    #250238 30%,
+    black 60%
+  );
+  overflow: hidden;
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+}
+
+.wrap {
+  transform-style: preserve-3d;
+  perspective: 800px;
+}
+
+.tri {
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+@for $i from 1 through $total {
+  $size: random(50) * 1px;
+  $rotate: random(360) * 1deg;
+  .tri:nth-child(#{$i}) {
+    border-top: $size solid hsla(random(360), 100%, 50%, 1);
+    border-right: $size solid transparent;
+    border-left: $size solid transparent;
+    margin-left: -$size/2;
+    margin-top: -$size/2;
+    -webkit-filter: grayscale(1);
+    filter: grayscale(1);
+    transform: rotate($rotate) translate3d(0, 0, -1500px) scale(0);
+    animation: anim#{$i} 12s infinite linear;
+    animation-delay: $i * -($time/$total);
+    opacity: 0;
+  }
+
+  @keyframes anim#{$i} {
+    0% {
+      opacity: 1;
+      transform: rotate($rotate * 1.5)
+        translate3d(random(1000) * 1px, random(1000) * 1px, 1000px) scale(1);
+    }
+  }
+}
+
+.home-title {
+  font-family: "Bebas Neue", cursive;
+  font-size: 6rem;
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.home-subtitle {
+  position: absolute;
+  top: 12rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.home-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 250px;
+  width: 400px;
+  margin-top: 4rem;
+
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: left 0.5s ease;
+}
+
+.form-nav {
+  position: absolute;
+  bottom: -5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+form {
+  position: absolute;
+  height: 100%;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 20px 0;
+  transition: left 0.5s ease;
+  z-index: 2;
+}
+input {
+  display: block;
+  appearance: none;
+  outline: 0;
+  border: 1px solid $white;
+  background-color: transparent;
+  width: 250px;
+
+  border-radius: 3px;
+  padding: 10px 15px;
+  margin: 0 auto 10px auto;
+
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 1rem;
+
+  color: $grey;
+
+  transition-duration: 0.25s;
+  font-weight: 300;
+}
+input::placeholder {
+  color: $white;
+}
+
+input:hover {
+  background-color: $white;
+}
+
+input:focus {
+  background-color: $white;
+  width: 300px;
+}
+
+button {
+  appearance: none;
+  outline: 0;
+  border-radius: 3px;
+  width: 250px;
+  cursor: pointer;
+  font-size: 18px;
+  border: $white 1px solid;
+  background-color: $white;
+  color: $purple;
+  transition-duration: 0.25s;
+  padding: 0.6rem 1.1rem;
+
+  &:hover {
+    color: $white;
+
+    background-color: $purple;
+  }
+}
+select {
+  appearance: none;
+  cursor: pointer;
+  color: $white;
+  position: relative;
+  appearance: none;
+  outline: 0;
+  border: 1px solid $white;
+  background-color: transparent;
+  margin-bottom: 1rem;
+  width: 250px;
+  height: 2.75rem;
+  font-size: 1rem;
+  text-align: center;
+
+  border-radius: 3px;
+  padding: 10px 15px;
+
+  z-index: 1;
+
+  &::-ms-expand {
+    display: none;
+  }
+  outline: none;
+}
+
+select option {
+  color: $grey;
+}
+
+.select {
+  position: relative;
+  display: block;
+  appearance: none;
+  outline: 0;
+
+  background-color: transparent;
+  width: 250px;
+
+  border-radius: 3px;
+
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 18px;
+
+    width: 0.8em;
+    height: 0.5em;
+    background-color: $white;
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  }
+}
+.arrow {
+  border: solid $white;
+  border-width: 0 3px 3px 0;
+
+  display: inline-block;
+  padding: 5px;
+  margin-top: 2rem;
+  cursor: pointer;
+  transition-duration: 0.25s;
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
+.right:hover {
+  transform: rotate(-45deg) scale(1.5);
+}
+.left:hover {
+  transform: rotate(135deg) scale(1.5);
+}
+
+.hidden1 {
+  left: 80rem;
+}
+.hidden2 {
+  left: -60rem;
+}

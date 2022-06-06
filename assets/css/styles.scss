@@ -1,7 +1,9 @@
 @import "./_habits.scss";
 
-$grey: #2d3032;
+$grey: #373839;
 $white: #d2d3d3;
+$text: #b8b8b8;
+
 $purple: #8017b9;
 $total: 100;
 $time: 10s;
@@ -17,9 +19,13 @@ html,
 body {
   height: 100vh;
   width: 100vw;
-  color: $white;
+  color: $text;
   overflow: hidden;
   font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  white-space: nowrap;
 }
 
 //Main background effect
@@ -80,8 +86,7 @@ body {
 }
 
 .home-title {
-  font-family: "Bebas Neue", cursive;
-  font-size: 6rem;
+  font-size: 5rem;
   position: absolute;
   top: 5rem;
   left: 50%;
@@ -171,6 +176,7 @@ input:focus {
 }
 
 button {
+  font-family: "Montserrat", sans-serif;
   appearance: none;
   outline: 0;
   border-radius: 3px;

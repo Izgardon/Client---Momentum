@@ -1,0 +1,46 @@
+$grey: #1e1f20;
+$white: #d2d3d3;
+$purple: #8017b9;
+
+.habits-page {
+  background: $grey;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  margin-top: 1rem;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+#logout-btn {
+  margin-right: 4rem;
+  width: min-content;
+  position: relative;
+  background: transparent;
+  border: none;
+  color: $white;
+}
+
+#logout-btn:hover {
+  background: transparent;
+  color: $purple;
+}
+
+#logout-btn::after {
+  content: "";
+  z-index: 3000;
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: $purple;
+  transition: width 0.3s ease-in;
+}
+
+#logout-btn:hover::after {
+  width: 100%;
+}

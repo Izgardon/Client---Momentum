@@ -1,9 +1,21 @@
-$grey: #1e1f20;
+$grey: #373839;
 $white: #d2d3d3;
+$text: #b8b8b8;
+
 $purple: #8017b9;
 
 .habits-page {
-  background: $grey;
+  background: black;
+  background-image: radial-gradient(
+    circle at center,
+
+    #3e025e 0%,
+    #250238 30%,
+    black 60%
+  );
+  overflow-y: scroll;
+
+  position: relative;
 }
 
 header {
@@ -13,6 +25,12 @@ header {
 
   justify-content: space-between;
   align-items: center;
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+  margin-bottom: 15rem;
 }
 
 #logout-btn {
@@ -43,4 +61,68 @@ header {
 
 #logout-btn:hover::after {
   width: 100%;
+}
+
+.habits-title {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.habits {
+  position: relative;
+  max-width: 800px;
+  width: 80%;
+  margin: auto;
+  top: 25%;
+}
+
+.habit {
+  background-color: $white;
+  color: $grey;
+  padding: 2rem 3rem;
+  margin-bottom: 2rem;
+}
+
+.habit-info {
+  display: flex;
+  margin-block: 1.5rem;
+}
+
+.progress-bar {
+  width: 80%;
+  position: relative;
+  background-color: transparent;
+  border: 1px solid $grey;
+  height: 35px;
+}
+.progress-bar-completion {
+  width: 12.5%;
+  height: 100%;
+  background-color: $purple;
+}
+.progress-bar-text {
+  font-size: 0.75rem;
+  position: absolute;
+  right: 0;
+  top: -1rem;
+}
+
+.habit-tick {
+  width: 10%;
+}
+
+.habit-image {
+  width: 40px;
+
+  background-image: url("../images/code.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: 1rem;
+}
+
+.flex {
+  display: flex;
+  height: fit-content;
 }

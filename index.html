@@ -24,7 +24,7 @@
     <script src="assets/javascript/index.js" defer></script>
     <title>Momentum</title>
   </head>
-  <body>
+  <body class="index-page">
     <div class="wrap">
       <div class="tri"></div>
       <div class="tri"></div>
@@ -143,26 +143,41 @@
       <div class="tri"></div>
       <div class="tri"></div>
     </div>
-    <h1 class="home-title">Momentum</h1>
+    <h1 class="home-title">M o m e n t u m</h1>
     <h3 class="home-subtitle">Let your coding pick up pace</h3>
     <div class="home-page">
       <div class="buttons">
         <button class="login-form-btn">Login</button>
         <button class="register-form-btn">Register</button>
       </div>
-      <form class="login hidden2">
+      <form action="javascript:void(0);" class="login hidden2">
         <label for="login-username"></label>
-        <input type="text" id="login-username" placeholder="Username" />
+        <input
+          type="text"
+          id="login-username"
+          required
+          placeholder="Username"
+        />
         <label for="login-password"></label>
-        <input type="password" id="login-password" placeholder="Password" />
+        <input
+          type="password"
+          id="login-password"
+          required
+          placeholder="Password"
+        />
         <div class="form-nav">
-          <button type="button" class="login-btn">Login</button>
+          <button type="submit" class="login-btn">Login</button>
           <p class="arrow right"></p>
         </div>
       </form>
-      <form class="register hidden1">
+      <form action="javascript:void(0);" class="register hidden1">
         <label for="register-username"></label>
-        <input type="text" id="register-username" placeholder="Username" />
+        <input
+          type="text"
+          id="register-username"
+          required
+          placeholder="Username"
+        />
         <div class="select">
           <label for="skill"></label>
           <select id="skill" name="skill">
@@ -174,9 +189,14 @@
           </select>
         </div>
         <label for="register-password"></label>
-        <input type="password" id="register-password" placeholder="Password" />
+        <input
+          type="password"
+          id="register-password"
+          required
+          placeholder="Password"
+        />
         <div class="form-nav">
-          <button type="button" register-btn">Register</button>
+          <button type="submit" class="register-btn">Register</button>
           <p class="arrow left"></p>
         </div>
       </form>

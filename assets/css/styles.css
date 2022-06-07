@@ -25,6 +25,12 @@ main {
   margin-bottom: 15rem;
 }
 
+.logo img {
+  height: 20vh;
+  margin-left: 1rem;
+  background-color: purple; 
+}
+
 #logout-btn {
   margin-right: 4rem;
   width: -webkit-min-content;

@@ -4,6 +4,15 @@ $text: #b8b8b8;
 
 $purple: #8017b9;
 
+.user-profile {
+  margin-inline: auto;
+  height: 300px;
+  width: 500px;
+  background-color: $white;
+  margin-top: 4rem;
+  margin-bottom: -4rem;
+}
+
 .habits-page {
   background: black;
   background-image: radial-gradient(
@@ -29,7 +38,7 @@ header {
 
 main {
   width: 100vw;
-  height: 100vh;
+  height: fit-content;
   margin-bottom: 15rem;
 }
 
@@ -64,45 +73,131 @@ main {
 }
 
 .habits-title {
-  position: absolute;
+  width: 100vw;
+  position: relative;
   top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
+  text-align: center;
 }
 
+//Adding new habits buttons
+
 .new-habit {
-  position: absolute;
+  width: fit-content;
+  position: relative;
   display: flex;
-  right: 0;
-  top: -4rem;
+  right: -77%;
+
+  top: 0;
   align-items: center;
   justify-content: center;
 }
 .new-habit-text {
+  position: relative;
   margin-right: 1rem;
 }
-.new-habit-btn {
+
+.new-daily-btn {
   cursor: pointer;
   font-size: 4rem;
-  transition-duration: 1s;
+  transition-duration: 1.5s;
+  color: $purple;
 }
 
-.new-habit-btn:hover {
-  transform: rotate(360deg);
+.new-daily-habit-line {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 2px;
+  left: 12.5rem;
+  top: 38px;
+  background-color: $purple;
+  transition: width 1.5s, opacity 2s;
 }
+
+.new-daily-habit-selection {
+  position: absolute;
+  width: fit-content;
+  left: 14rem;
+  background-color: $white;
+  padding: 1rem;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  transition-duration: 1.5s;
+}
+
+.new-daily-habit-choice {
+  list-style: none;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  color: $purple;
+}
+.new-daily-habit-choice:hover {
+  font-weight: 800;
+}
+
+//Weekly
+
+.new-weekly-habit {
+  width: fit-content;
+  position: relative;
+  display: flex;
+  right: -77%;
+
+  top: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-weekly-btn {
+  cursor: pointer;
+  font-size: 4rem;
+  transition-duration: 1.5s;
+  color: $purple;
+}
+
+.new-weekly-habit-btn:hover {
+  transform: rotate(-360deg);
+}
+.new-weekly-habit-line {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 2px;
+  left: 13.5rem;
+  top: 38px;
+  background-color: $purple;
+  transition: width 1.5s, opacity 2s;
+}
+
+.new-weekly-habit-selection {
+  position: absolute;
+  width: fit-content;
+  left: 14rem;
+  background-color: $white;
+  padding: 1rem;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  transition-duration: 1.5s;
+}
+
+//Main habit cards
 
 .habits {
   position: relative;
   max-width: 800px;
-  width: 80%;
+  width: 75%;
   margin: auto;
-  top: 25%;
+
+  top: 10rem;
+  height: fit-content;
 }
 .weekly-habits {
   position: relative;
   max-width: 800px;
-  width: 80%;
-  margin: auto;
+  width: 75%;
+  margin-inline: auto;
+  margin-top: 15rem;
+  margin-bottom: 5rem;
 }
 
 .habit {
@@ -149,7 +244,25 @@ main {
   margin-left: 1rem;
 }
 
+//Helpers
+
 .flex {
   display: flex;
   height: fit-content;
+}
+
+.out-wide {
+  left: 50rem;
+}
+.out-wide-line {
+  width: 50rem;
+  opacity: 0;
+}
+
+.spin {
+  transform: rotate(-360deg);
+}
+
+.spin-reverse {
+  transform: rotate(360deg);
 }

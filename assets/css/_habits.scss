@@ -70,12 +70,39 @@ main {
   transform: translateX(-50%);
 }
 
+.new-habit {
+  position: absolute;
+  display: flex;
+  right: 0;
+  top: -4rem;
+  align-items: center;
+  justify-content: center;
+}
+.new-habit-text {
+  margin-right: 1rem;
+}
+.new-habit-btn {
+  cursor: pointer;
+  font-size: 4rem;
+  transition-duration: 1s;
+}
+
+.new-habit-btn:hover {
+  transform: rotate(360deg);
+}
+
 .habits {
   position: relative;
   max-width: 800px;
   width: 80%;
   margin: auto;
   top: 25%;
+}
+.weekly-habits {
+  position: relative;
+  max-width: 800px;
+  width: 80%;
+  margin: auto;
 }
 
 .habit {

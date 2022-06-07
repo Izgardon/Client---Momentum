@@ -5,12 +5,29 @@ $text: #b8b8b8;
 $purple: #8017b9;
 
 .user-profile {
+  position: relative;
   margin-inline: auto;
-  height: 300px;
-  width: 500px;
-  background-color: $white;
+  height: 350px;
+  width: 600px;
+  background-image: url(../images/coder.jpg);
+  background-size: cover;
+  border: $white 1px solid;
   margin-top: 4rem;
   margin-bottom: -4rem;
+}
+
+.user-profile-details {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 54%;
+  color: $purple;
+}
+.user-profile-details > div {
+  margin-bottom: 1.5rem;
 }
 
 .habits-page {
@@ -172,7 +189,7 @@ main {
 .new-weekly-habit-selection {
   position: absolute;
   width: fit-content;
-  left: 14rem;
+  left: 15rem;
   background-color: $white;
   padding: 1rem;
   padding-top: 2rem;

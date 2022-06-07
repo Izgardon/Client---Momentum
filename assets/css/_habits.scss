@@ -1,0 +1,285 @@
+$grey: #373839;
+$white: #d2d3d3;
+$text: #b8b8b8;
+
+$purple: #8017b9;
+
+.user-profile {
+  position: relative;
+  margin-inline: auto;
+  height: 350px;
+  width: 600px;
+  background-image: url(../images/coder.jpg);
+  background-size: cover;
+  border: $white 1px solid;
+  margin-top: 4rem;
+  margin-bottom: -4rem;
+}
+
+.user-profile-details {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 54%;
+  color: $purple;
+}
+.user-profile-details > div {
+  margin-bottom: 1.5rem;
+}
+
+.habits-page {
+  background: black;
+  background-image: radial-gradient(
+    circle at center,
+
+    #3e025e 0%,
+    #250238 30%,
+    black 60%
+  );
+  overflow-y: scroll;
+
+  position: relative;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  margin-top: 1rem;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+main {
+  width: 100vw;
+  height: fit-content;
+  margin-bottom: 15rem;
+}
+
+#logout-btn {
+  margin-right: 4rem;
+  width: min-content;
+  position: relative;
+  background: transparent;
+  border: none;
+  color: $white;
+}
+
+#logout-btn:hover {
+  background: transparent;
+  color: $purple;
+}
+
+#logout-btn::after {
+  content: "";
+  z-index: 3000;
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: $purple;
+  transition: width 0.3s ease-in;
+}
+
+#logout-btn:hover::after {
+  width: 100%;
+}
+
+.habits-title {
+  width: 100vw;
+  position: relative;
+  top: 10%;
+  text-align: center;
+}
+
+//Adding new habits buttons
+
+.new-habit {
+  width: fit-content;
+  position: relative;
+  display: flex;
+  right: -77%;
+
+  top: 0;
+  align-items: center;
+  justify-content: center;
+}
+.new-habit-text {
+  position: relative;
+  margin-right: 1rem;
+}
+
+.new-daily-btn {
+  cursor: pointer;
+  font-size: 4rem;
+  transition-duration: 1.5s;
+  color: $purple;
+}
+
+.new-daily-habit-line {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 2px;
+  left: 12.5rem;
+  top: 38px;
+  background-color: $purple;
+  transition: width 1.5s, opacity 2s;
+}
+
+.new-daily-habit-selection {
+  position: absolute;
+  width: fit-content;
+  left: 14rem;
+  background-color: $white;
+  padding: 1rem;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  transition-duration: 1.5s;
+}
+
+.new-daily-habit-choice {
+  list-style: none;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  color: $purple;
+}
+.new-daily-habit-choice:hover {
+  font-weight: 800;
+}
+
+//Weekly
+
+.new-weekly-habit {
+  width: fit-content;
+  position: relative;
+  display: flex;
+  right: -77%;
+
+  top: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-weekly-btn {
+  cursor: pointer;
+  font-size: 4rem;
+  transition-duration: 1.5s;
+  color: $purple;
+}
+
+.new-weekly-habit-btn:hover {
+  transform: rotate(-360deg);
+}
+.new-weekly-habit-line {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 2px;
+  left: 13.5rem;
+  top: 38px;
+  background-color: $purple;
+  transition: width 1.5s, opacity 2s;
+}
+
+.new-weekly-habit-selection {
+  position: absolute;
+  width: fit-content;
+  left: 15rem;
+  background-color: $white;
+  padding: 1rem;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  transition-duration: 1.5s;
+}
+
+//Main habit cards
+
+.habits {
+  position: relative;
+  max-width: 800px;
+  width: 75%;
+  margin: auto;
+
+  top: 10rem;
+  height: fit-content;
+}
+.weekly-habits {
+  position: relative;
+  max-width: 800px;
+  width: 75%;
+  margin-inline: auto;
+  margin-top: 15rem;
+  margin-bottom: 5rem;
+}
+
+.habit {
+  background-color: $white;
+  color: $grey;
+  padding: 2rem 3rem;
+  margin-bottom: 2rem;
+}
+
+.habit-info {
+  display: flex;
+  margin-block: 1.5rem;
+}
+
+.progress-bar {
+  width: 80%;
+  position: relative;
+  background-color: transparent;
+  border: 1px solid $grey;
+  height: 35px;
+}
+.progress-bar-completion {
+  width: 12.5%;
+  height: 100%;
+  background-color: $purple;
+}
+.progress-bar-text {
+  font-size: 0.75rem;
+  position: absolute;
+  right: 0;
+  top: -1rem;
+}
+
+.habit-tick {
+  width: 10%;
+}
+
+.habit-image {
+  width: 40px;
+
+  background-image: url("../images/code.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: 1rem;
+}
+
+//Helpers
+
+.flex {
+  display: flex;
+  height: fit-content;
+}
+
+.out-wide {
+  left: 50rem;
+}
+.out-wide-line {
+  width: 50rem;
+  opacity: 0;
+}
+
+.spin {
+  transform: rotate(-360deg);
+}
+
+.spin-reverse {
+  transform: rotate(360deg);
+}

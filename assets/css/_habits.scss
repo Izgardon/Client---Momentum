@@ -4,6 +4,11 @@ $text: #b8b8b8;
 
 $purple: #8017b9;
 
+.logo img {
+  height: 20vh;
+  margin-left: 1rem;
+}
+
 .user-profile {
   position: relative;
   margin-inline: auto;
@@ -92,7 +97,7 @@ main {
 .habits-title {
   width: 100vw;
   position: relative;
-  top: 10%;
+  margin-top: 3rem;
   text-align: center;
 }
 
@@ -230,7 +235,7 @@ main {
 }
 
 .progress-bar {
-  width: 80%;
+  width: 85%;
   position: relative;
   background-color: transparent;
   border: 1px solid $grey;

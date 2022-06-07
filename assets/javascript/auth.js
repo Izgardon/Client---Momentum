@@ -17,6 +17,7 @@ let registerUsername = document.querySelector("#register-username");
 let registerPassword = document.querySelector("#register-password");
 let loginError = document.querySelector(".login-error");
 let registerError = document.querySelector(".register-error");
+let skill = document.querySelector("#skill");
 
 //Log in page
 
@@ -58,6 +59,7 @@ registerBtn.addEventListener("click", (e) => {
     let registerDetails = {
       username: registerUsername.value,
       password: registerPassword.value,
+      skill: skill.value,
     };
     requestReg(registerDetails);
   }

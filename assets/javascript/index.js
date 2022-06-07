@@ -2,33 +2,32 @@
 
 function currentUser() {
   const username = localStorage.getItem("username");
-  console.log(username);
+  return username;
 }
 
-
 //logout of page
-const logoutBtn = document.querySelector("#logout-btn")
+const logoutBtn = document.querySelector("#logout-btn");
 logoutBtn.addEventListener("click", logout, (e) => {
-  console.log("button clicked")
-})
+  console.log("button clicked");
+});
 
 function logout() {
   localStorage.clear();
   location.hash = "";
-  location.href="index.html";
+  location.href = "index.html";
 }
-
-currentUser();
 
 async function getAllHabits() {
   try {
-    const response = await fetch("");
+    const response = await fetch("http://localhost:5005/habits/");
     const data = await response.json();
-    return data;
+    console.log(data);
   } catch (err) {
     console.warn(err);
   }
 }
+
+getAllHabits();
 
 //All moving parts
 

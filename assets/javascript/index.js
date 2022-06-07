@@ -5,6 +5,8 @@ function currentUser() {
   console.log(username);
 }
 
+
+//logout of page
 const logoutBtn = document.querySelector("#logout-btn")
 logoutBtn.addEventListener("click", logout, (e) => {
   console.log("button clicked")

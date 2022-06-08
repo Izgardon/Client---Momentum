@@ -1,4 +1,4 @@
-//All things habits
+//Getting current username of logged in
 
 function currentUser() {
   const username = localStorage.getItem("username");
@@ -17,17 +17,23 @@ function logout() {
   location.href = "index.html";
 }
 
-async function getAllHabits() {
+//Pulling all data of a user
+
+async function getAllHabits(user) {
   try {
-    const response = await fetch("http://localhost:5005/habits/");
+    const response = await fetch(`http://localhost:5005/habits/${user}`);
     const data = await response.json();
     console.log(data);
+    return data;
   } catch (err) {
     console.warn(err);
   }
 }
 
-getAllHabits();
+window.addEventListener("load", () => {
+  let userData = getAllHabits(currentUser());
+  loadProfile(userData);
+});
 
 //All moving parts
 

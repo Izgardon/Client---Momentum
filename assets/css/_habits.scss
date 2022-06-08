@@ -4,9 +4,8 @@ $text: #b8b8b8;
 
 $purple: #8017b9;
 
-.logo img {
-  height: 20vh;
-  margin-left: 1rem;
+.logo {
+  height: 100px;
 }
 
 .user-details {
@@ -57,7 +56,6 @@ $purple: #8017b9;
 header {
   width: 100%;
   display: flex;
-  margin-top: 1rem;
 
   justify-content: space-between;
   align-items: center;
@@ -232,10 +230,13 @@ p {
 }
 
 .habit {
+  position: relative;
   background-color: $white;
   color: $grey;
   padding: 2rem 3rem;
   margin-bottom: 2rem;
+  left: 0;
+  transition: left 2s;
 }
 
 .habit-info {
@@ -276,9 +277,19 @@ p {
   content: "+";
   position: absolute;
   color: $white;
-  left: 0.28rem;
+  left: 0.26rem;
   top: -1.23rem;
   font-size: 4.5rem;
+  transition-duration: 0.1s;
+}
+
+.habit-plus:hover {
+  box-shadow: 0 0 7px $purple;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.habit-plus:active::after {
 }
 .habit-tick {
   width: 10%;
@@ -315,4 +326,12 @@ p {
 
 .white {
   color: $white;
+}
+
+.hidden {
+  display: none;
+}
+
+.left {
+  left: -100rem;
 }

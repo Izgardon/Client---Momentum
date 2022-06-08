@@ -6,7 +6,7 @@ let username = document.querySelector(".username");
 let bestHabit = document.querySelector(".best-habit");
 let worstHabit = document.querySelector(".worst-habit");
 
-//Habits
+//Adding or removing Habits
 let codeHabit = document.querySelector(".code");
 let waterHabit = document.querySelector(".water");
 let outdoorHabit = document.querySelector(".outdoor");
@@ -16,6 +16,17 @@ let waterChoiceBtn = document.querySelector(".water-choice");
 let outdoorChoiceBtn = document.querySelector(".outdoor-choice");
 let projectChoiceBtn = document.querySelector(".project-choice");
 
+//Habits progress
+
+let incrementBtns = document.querySelectorAll(".habit-plus");
+let codeProgress = document.querySelector(".code-progress");
+let waterProgress = document.querySelector(".water-progress");
+let outdoorsProgress = document.querySelector(".outdoors-progress");
+let projectsProgress = document.querySelector(".projects-progress");
+let codeText = document.querySelector(".code-text");
+let waterText = document.querySelector(".water-text");
+let outdoorsText = document.querySelector(".outdoors-text");
+let projectsText = document.querySelector(".projects-text");
 //Getting current username of logged in
 
 function currentUser() {
@@ -51,19 +62,11 @@ window.addEventListener("load", async () => {
   let userData = await getAllData(currentUser());
   loadProfile(userData[0]);
   console.log(userData[0]);
-  if (userData[0].habits.code.active == true) {
-    showCode();
-  }
-  if (userData[0].habits.water.active == true) {
-    showWater();
-  }
-  if (userData[0].habits.outdoors.active == true) {
-    showOutdoor();
-  }
-  if (userData[0].habits.projects.active == true) {
-    showProject();
-  }
+  checkForHabits(userData[0]);
+  updatingHabits(userData[0], ["code", "water", "outdoors", "projects"]);
 });
+
+//Loading profile
 
 function loadProfile(data) {
   let date = new Date();
@@ -130,7 +133,91 @@ async function addHabit(habit) {
     },
   };
 
-  fetch(`http://localhost:5005/habits/${user}`, options);
+  await fetch(`http://localhost:5005/habits/${user}`, options);
+}
+
+function checkForHabits(data) {
+  if (data.habits.code.active == true) {
+    showCode();
+  }
+  if (data.habits.water.active == true) {
+    showWater();
+  }
+  if (data.habits.outdoors.active == true) {
+    showOutdoor();
+  }
+  if (data.habits.projects.active == true) {
+    showProject();
+  }
+}
+
+//Incrementing Habits
+
+function updatingHabits(data, arr) {
+  arr.forEach((habit) => {
+    /* console.log(habit, eval(`data.habits.${habit}`)); */
+    if (eval(`data.habits.${habit}`).current == 0) {
+      eval(`${habit}Progress`).style.width = "0";
+    } else if (
+      eval(`data.habits.${habit}`).current >= eval(`data.habits.${habit}`).max
+    ) {
+      eval(`${habit}Progress`).style.width = "100%";
+    } else {
+      eval(`${habit}Progress`).style.width = `${
+        (eval(`data.habits.${habit}`).current /
+          eval(`data.habits.${habit}`).max) *
+        100
+      }%`;
+    }
+    updatingHabitText(data, habit);
+  });
+}
+
+//Buttons that work for each depending on ID, calls update function above
+
+incrementBtns.forEach((btn) => {
+  btn.addEventListener("click", async (e) => {
+    let type = e.target.id;
+    let user = currentUser();
+    const options = {
+      method: "PATCH",
+      body: JSON.stringify({
+        type: type,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    };
+
+    let response = await fetch(`http://localhost:5005/habits/${user}`, options);
+    const data = await response.json();
+    updatingHabits(data, ["code", "water", "outdoors", "projects"]);
+  });
+});
+
+//Updating the text above each habit
+
+function updatingHabitText(data, habit) {
+  if (habit == "code") {
+    let current = eval(`data.habits.${habit}`).current;
+    let max = eval(`data.habits.${habit}`).max;
+    codeText.textContent = `You have completed ${current} out of ${max} hours today!`;
+  }
+  if (habit == "water") {
+    let current = eval(`data.habits.${habit}`).current;
+    let max = eval(`data.habits.${habit}`).max;
+    waterText.textContent = `You have consumed ${current} out of ${max} glasses today!`;
+  }
+  if (habit == "outdoors") {
+    let current = eval(`data.habits.${habit}`).current;
+    let max = eval(`data.habits.${habit}`).max;
+    outdoorsText.textContent = `You adventured ${current} out of ${max} hours today!`;
+  }
+  if (habit == "projects") {
+    let current = eval(`data.habits.${habit}`).current;
+    let max = eval(`data.habits.${habit}`).max;
+    projectsText.textContent = `You have completed ${current} out of ${max} projects this week!`;
+  }
 }
 
 //All moving parts

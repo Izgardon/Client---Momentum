@@ -26,7 +26,7 @@
   </head>
   <body class="habits-page">
     <header>
-      <div class="logo">Logo here</div>
+      <img src="./assets/images/logo.png" alt="Logo" class="logo" />
       <button id="logout-btn">Logout</button>
     </header>
     <main>
@@ -36,9 +36,11 @@
         <div class="user-profile-details">
           <div>
             Username:
-            <span class="white username">Izgardon</span>
+            <span class="white username"
+              >No user - please Logout and Login</span
+            >
           </div>
-          <div>Date: <span class="white date">08/06/2022</span></div>
+          <div>Date: <span class="white date"></span></div>
           <div>Best habit today: <span class="white best-habit">?</span></div>
           <div>Worst habit today: <span class="white worst-habit">?</span></div>
         </div>
@@ -50,12 +52,14 @@
           <div class="new-daily-habit-line out-wide-line"></div>
           <div class="new-daily-habit-selection out-wide">
             <p>What do you want to do?</p>
-            <li class="new-daily-habit-choice">Code more</li>
-            <li class="new-daily-habit-choice">Explore outside</li>
-            <li class="new-daily-habit-choice">Water yourself</li>
+            <li class="new-daily-habit-choice code-choice">Code more</li>
+            <li class="new-daily-habit-choice outdoor-choice">
+              Explore outside
+            </li>
+            <li class="new-daily-habit-choice water-choice">Water yourself</li>
           </div>
         </div>
-        <div class="habit code">
+        <div class="habit hidden left code">
           <div class="flex">
             <h3>Time coding</h3>
             <img
@@ -76,7 +80,7 @@
             <div class="streak-box"></div>
           </div>
         </div>
-        <div class="habit water">
+        <div class="habit hidden left water">
           <div class="flex">
             <h3>Water drunk</h3>
             <img
@@ -97,7 +101,7 @@
             <div class="streak-box"></div>
           </div>
         </div>
-        <div class="habit">
+        <div class="habit hidden left outdoor">
           <div class="flex">
             <h3>Time outside</h3>
             <img
@@ -125,10 +129,12 @@
           <div class="new-weekly-btn">+</div>
           <div class="new-weekly-habit-line out-wide-line"></div>
           <div class="new-weekly-habit-selection out-wide">
-            <li class="new-daily-habit-choice">Finish projects</li>
+            <li class="new-daily-habit-choice project-choice">
+              Finish projects
+            </li>
           </div>
         </div>
-        <div class="habit code">
+        <div class="habit hidden left project">
           <div class="flex">
             <h3>Projects completed</h3>
             <img

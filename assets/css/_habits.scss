@@ -4,6 +4,42 @@ $text: #b8b8b8;
 
 $purple: #8017b9;
 
+.logo img {
+  height: 20vh;
+  margin-left: 1rem;
+}
+
+.user-details {
+  color: $white;
+  margin: 0.5rem;
+}
+
+.user-profile {
+  position: relative;
+  margin-inline: auto;
+  height: 350px;
+  width: 600px;
+  background-image: url(../images/coder.jpg);
+  background-size: cover;
+  border: $white 1px solid;
+  margin-top: 4rem;
+  margin-bottom: -4rem;
+}
+
+.user-profile-details {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 54%;
+  color: $purple;
+}
+.user-profile-details > div {
+  margin-bottom: 1.5rem;
+}
+
 .habits-page {
   background: black;
   background-image: radial-gradient(
@@ -29,7 +65,7 @@ header {
 
 main {
   width: 100vw;
-  height: 100vh;
+  height: fit-content;
   margin-bottom: 15rem;
 }
 
@@ -64,18 +100,135 @@ main {
 }
 
 .habits-title {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100vw;
+  position: relative;
+  margin-top: 3rem;
+  text-align: center;
 }
+
+//Adding new habits buttons
+
+.new-habit {
+  width: fit-content;
+  position: relative;
+  display: flex;
+  right: -73%;
+
+  top: 0;
+  align-items: center;
+  justify-content: center;
+}
+.new-habit-text {
+  position: relative;
+  margin-right: 1rem;
+}
+
+.new-daily-btn {
+  cursor: pointer;
+  font-size: 4rem;
+  transition-duration: 1.5s;
+  color: $purple;
+}
+
+.new-daily-habit-line {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 2px;
+  left: 12.5rem;
+  top: 38px;
+  background-color: $purple;
+  transition: width 1.5s, opacity 2s;
+}
+
+.new-daily-habit-selection {
+  position: absolute;
+  width: 17rem;
+  left: 14rem;
+  background-color: $white;
+  padding: 1rem;
+  padding-top: 1rem;
+  padding-right: 2rem;
+  transition-duration: 1.5s;
+}
+p {
+  color: $grey;
+  margin-bottom: 1rem;
+}
+
+.new-daily-habit-choice {
+  list-style: none;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  color: $purple;
+}
+.new-daily-habit-choice:hover {
+  font-weight: 800;
+}
+
+//Weekly
+
+.new-weekly-habit {
+  width: fit-content;
+  position: relative;
+  display: flex;
+  right: -72%;
+
+  top: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-weekly-btn {
+  cursor: pointer;
+  font-size: 4rem;
+  transition-duration: 1.5s;
+  color: $purple;
+}
+
+.new-weekly-habit-btn:hover {
+  transform: rotate(-360deg);
+}
+.new-weekly-habit-line {
+  content: "";
+  position: absolute;
+  width: 0px;
+  height: 2px;
+  left: 13.5rem;
+  top: 38px;
+  background-color: $purple;
+  transition: width 1.5s, opacity 2s;
+}
+
+.new-weekly-habit-selection {
+  position: absolute;
+  width: fit-content;
+  left: 15rem;
+  background-color: $white;
+  padding: 1rem;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  transition-duration: 1.5s;
+}
+
+//Main habit cards
 
 .habits {
   position: relative;
   max-width: 800px;
-  width: 80%;
+  width: 75%;
   margin: auto;
-  top: 25%;
+
+  top: 10rem;
+  height: fit-content;
+}
+.weekly-habits {
+  position: relative;
+  max-width: 800px;
+  width: 75%;
+  margin-inline: auto;
+  margin-top: 15rem;
+  margin-bottom: 5rem;
 }
 
 .habit {
@@ -91,7 +244,7 @@ main {
 }
 
 .progress-bar {
-  width: 80%;
+  width: 85%;
   position: relative;
   background-color: transparent;
   border: 1px solid $grey;
@@ -109,20 +262,57 @@ main {
   top: -1rem;
 }
 
+.habit-plus {
+  position: absolute;
+  top: -7.5px;
+  right: -5rem;
+  width: 50px;
+  height: 50px;
+  background-color: $purple;
+  border-radius: 50%;
+}
+
+.habit-plus::after {
+  content: "+";
+  position: absolute;
+  color: $white;
+  left: 0.28rem;
+  top: -1.23rem;
+  font-size: 4.5rem;
+}
 .habit-tick {
   width: 10%;
 }
 
 .habit-image {
-  width: 40px;
+  width: 30px;
 
-  background-image: url("../images/code.png");
-  background-repeat: no-repeat;
-  background-size: contain;
   margin-left: 1rem;
 }
+
+//Helpers
 
 .flex {
   display: flex;
   height: fit-content;
+}
+
+.out-wide {
+  left: 50rem;
+}
+.out-wide-line {
+  width: 50rem;
+  opacity: 0;
+}
+
+.spin {
+  transform: rotate(-360deg);
+}
+
+.spin-reverse {
+  transform: rotate(360deg);
+}
+
+.white {
+  color: $white;
 }

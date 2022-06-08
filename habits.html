@@ -31,19 +31,45 @@
     </header>
     <main>
       <h1 class="habits-title">M O M E N T U M</h1>
-      <div class="user-profile"></div>
+      <div class="user-profile">
+        <h3 class="user-details"></h3>
+        <div class="user-profile-details">
+          <div>
+            Username:
+            <span class="white username">Izgardon</span>
+          </div>
+          <div>Date: <span class="white date">08/06/2022</span></div>
+          <div>Best habit today: <span class="white best-habit">?</span></div>
+          <div>Worst habit today: <span class="white worst-habit">?</span></div>
+        </div>
+      </div>
       <div class="habits">
+        <div class="new-habit">
+          <div class="new-habit-text">Add new daily habit:</div>
+          <div class="new-daily-btn">+</div>
+          <div class="new-daily-habit-line out-wide-line"></div>
+          <div class="new-daily-habit-selection out-wide">
+            <p>What do you want to do?</p>
+            <li class="new-daily-habit-choice">Code more</li>
+            <li class="new-daily-habit-choice">Explore outside</li>
+            <li class="new-daily-habit-choice">Water yourself</li>
+          </div>
+        </div>
         <div class="habit code">
           <div class="flex">
             <h3>Time coding</h3>
-            <div class="habit-image"></div>
+            <img
+              src="./assets/images/code.png"
+              alt="Code symbol"
+              class="habit-image"
+            />
           </div>
           <div class="habit-info">
             <div class="progress-bar">
               <div class="progress-bar-completion"></div>
               <div class="progress-bar-text">1 of 6 hours completed</div>
+              <div class="habit-plus"></div>
             </div>
-            <div class="habit-tick"></div>
           </div>
           <div class="streak">
             <h4>Streak:</h4>
@@ -53,14 +79,18 @@
         <div class="habit water">
           <div class="flex">
             <h3>Water drunk</h3>
-            <div class="habit-image"></div>
+            <img
+              src="./assets/images/water.png"
+              alt="Code symbol"
+              class="habit-image"
+            />
           </div>
           <div class="habit-info">
             <div class="progress-bar">
               <div class="progress-bar-completion"></div>
               <div class="progress-bar-text">1 of 6 glasses drunk</div>
+              <div class="habit-plus"></div>
             </div>
-            <div class="habit-tick"></div>
           </div>
           <div class="streak">
             <h4>Streak:</h4>
@@ -70,14 +100,49 @@
         <div class="habit">
           <div class="flex">
             <h3>Time outside</h3>
-            <div class="habit-image"></div>
+            <img
+              src="./assets/images/code.png"
+              alt="Code symbol"
+              class="habit-image"
+            />
           </div>
           <div class="habit-info">
             <div class="progress-bar">
               <div class="progress-bar-completion"></div>
               <div class="progress-bar-text">0.5 of 2 hours completed</div>
+              <div class="habit-plus"></div>
             </div>
-            <div class="habit-tick"></div>
+          </div>
+          <div class="streak">
+            <h4>Streak:</h4>
+            <div class="streak-box"></div>
+          </div>
+        </div>
+      </div>
+      <div class="weekly-habits">
+        <div class="new-weekly-habit">
+          <div class="new-habit-text">Add new weekly habit:</div>
+          <div class="new-weekly-btn">+</div>
+          <div class="new-weekly-habit-line out-wide-line"></div>
+          <div class="new-weekly-habit-selection out-wide">
+            <li class="new-daily-habit-choice">Finish projects</li>
+          </div>
+        </div>
+        <div class="habit code">
+          <div class="flex">
+            <h3>Projects completed</h3>
+            <img
+              src="./assets/images/code.png"
+              alt="Code symbol"
+              class="habit-image"
+            />
+          </div>
+          <div class="habit-info">
+            <div class="progress-bar">
+              <div class="progress-bar-completion"></div>
+              <div class="progress-bar-text">1 of 6 hours completed</div>
+              <div class="habit-plus"></div>
+            </div>
           </div>
           <div class="streak">
             <h4>Streak:</h4>

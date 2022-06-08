@@ -1,59 +1,75 @@
-//Variables for function of log in page
-let loginFormBtn = document.querySelector(".login-form-btn");
-let registerFormBtn = document.querySelector(".register-form-btn");
-let formBtns = document.querySelector(".buttons");
-let loginArrow = document.querySelector(".right");
-let registerArrow = document.querySelector(".left");
-let loginForm = document.querySelector(".login");
-let registerForm = document.querySelector(".register");
+//Getting current username of logged in
 
-//Variables that do the log in/register
+function currentUser() {
+  const username = localStorage.getItem("username");
+  return username;
+}
 
-let loginBtn = document.querySelector(".login-btn");
-let registerBtn = document.querySelector(".register-btn");
-let loginUsername = document.querySelector("#login-username");
-let loginPassword = document.querySelector("#login-password");
-let registerUsername = document.querySelector("#register-username");
-let registerPassword = document.querySelector("#register-password");
-
-//Log in page
-
-loginFormBtn.addEventListener("click", () => {
-  formBtns.classList.add("hidden1");
-  loginForm.classList.remove("hidden2");
-});
-registerFormBtn.addEventListener("click", () => {
-  formBtns.classList.add("hidden2");
-  registerForm.classList.remove("hidden1");
-});
-loginArrow.addEventListener("click", () => {
-  formBtns.classList.remove("hidden1");
-  loginForm.classList.add("hidden2");
-});
-registerArrow.addEventListener("click", () => {
-  formBtns.classList.remove("hidden2");
-  registerForm.classList.add("hidden1");
+//logout of page
+const logoutBtn = document.querySelector("#logout-btn");
+logoutBtn.addEventListener("click", logout, (e) => {
+  console.log("button clicked");
 });
 
-//Log in action
+function logout() {
+  localStorage.clear();
+  location.hash = "";
+  location.href = "index.html";
+}
 
-loginBtn.addEventListener("click", (e) => {
-  //requestLogin()
+//Pulling all data of a user
 
-  if (loginPassword.value != "" && loginUsername != "") {
-    window.location.href = "./habits.html";
+async function getAllHabits(user) {
+  try {
+    const response = await fetch(`http://localhost:5005/habits/${user}`);
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (err) {
+    console.warn(err);
+  }
+}
+
+window.addEventListener("load", () => {
+  let userData = getAllHabits(currentUser());
+  loadProfile(userData);
+});
+
+//All moving parts
+
+const dailyBtn = document.querySelector(".new-daily-btn");
+const newDailyLine = document.querySelector(".new-daily-habit-line");
+const newDailySelection = document.querySelector(".new-daily-habit-selection");
+const weeklyBtn = document.querySelector(".new-weekly-btn");
+const newWeeklyLine = document.querySelector(".new-weekly-habit-line");
+const newWeeklySelection = document.querySelector(
+  ".new-weekly-habit-selection"
+);
+
+dailyBtn.addEventListener("click", () => {
+  if (newDailyLine.classList.contains("out-wide-line")) {
+    dailyBtn.classList.remove("spin-reverse");
+    dailyBtn.classList.add("spin");
+    newDailyLine.classList.remove("out-wide-line");
+    newDailySelection.classList.remove("out-wide");
+  } else {
+    dailyBtn.classList.remove("spin");
+    dailyBtn.classList.add("spin-reverse");
+    newDailyLine.classList.add("out-wide-line");
+    newDailySelection.classList.add("out-wide");
   }
 });
 
-registerBtn.addEventListener("click", (e) => {
-  //Check username hasnt been taken etc etc
-
-  if (registerPassword.value != "" && registerUsername != "") {
-    formBtns.classList.remove("hidden2");
-    registerForm.classList.add("hidden1");
-    setTimeout(() => {
-      formBtns.classList.add("hidden1");
-      loginForm.classList.remove("hidden2");
-    }, 150);
+weeklyBtn.addEventListener("click", () => {
+  if (newWeeklyLine.classList.contains("out-wide-line")) {
+    weeklyBtn.classList.remove("spin-reverse");
+    weeklyBtn.classList.add("spin");
+    newWeeklyLine.classList.remove("out-wide-line");
+    newWeeklySelection.classList.remove("out-wide");
+  } else {
+    weeklyBtn.classList.remove("spin");
+    weeklyBtn.classList.add("spin-reverse");
+    newWeeklyLine.classList.add("out-wide-line");
+    newWeeklySelection.classList.add("out-wide");
   }
 });

@@ -21,7 +21,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap"
       rel="stylesheet"
     />
-    <script src="assets/javascript/index.js" defer></script>
+    <script src="assets/javascript/auth.js" defer></script>
     <title>Momentum</title>
   </head>
   <body class="index-page">
@@ -165,6 +165,7 @@
           required
           placeholder="Password"
         />
+        <div class="login-error"></div>
         <div class="form-nav">
           <button type="submit" class="login-btn">Login</button>
           <p class="arrow right"></p>
@@ -180,12 +181,14 @@
         />
         <div class="select">
           <label for="skill"></label>
-          <select id="skill" name="skill">
-            <option value="" disabled selected hidden>Proficiency Level</option>
-            <option value="Starting out">Starting out</option>
-            <option value="Novice">Novice</option>
-            <option value="Regular">Regular</option>
-            <option value="Expert">Expert</option>
+          <select id="skill" name="skill" required>
+            <option value="1" disabled selected hidden>
+              Proficiency Level
+            </option>
+            <option value="1">Starting out</option>
+            <option value="2">Novice</option>
+            <option value="3">Regular</option>
+            <option value="4">Expert</option>
           </select>
         </div>
         <label for="register-password"></label>
@@ -195,6 +198,7 @@
           required
           placeholder="Password"
         />
+        <div class="register-error"></div>
         <div class="form-nav">
           <button type="submit" class="register-btn">Register</button>
           <p class="arrow left"></p>

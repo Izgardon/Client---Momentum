@@ -31,7 +31,8 @@ let projectsText = document.querySelector(".projects-text");
 //Variables
 
 let habitArray = ["code", "water", "outdoors", "projects"];
-/* let ratioArray = []; */
+
+let date;
 //Getting current username of logged in
 
 function currentUser() {
@@ -64,6 +65,8 @@ function logout() {
 //Loading all data on page load
 
 window.addEventListener("load", async () => {
+  date = new Date().toLocaleDateString("en-GB");
+  console.log(date);
   let userData = await getAllData(currentUser());
   loadProfile(userData[0]);
 
@@ -74,9 +77,9 @@ window.addEventListener("load", async () => {
 //Loading profile
 
 function loadProfile(data) {
-  let date = new Date();
+  let dateText = new Date();
   username.textContent = data.username;
-  habitDate.textContent = date.toLocaleDateString("en-GB");
+  habitDate.textContent = dateText.toLocaleDateString("en-GB");
 }
 
 //Adding event listeners to new habit buttons
@@ -195,17 +198,33 @@ function updatingHabits(data, arr) {
     ratioArray.push(parseInt(ratio));
 
     //Checks on bar (to see if full/empty/part way (dont want to divide by 0))
-
+    console.log(eval(`data.habits.${habit}`).max);
     if (eval(`data.habits.${habit}`).current == 0) {
       eval(`${habit}Progress`).style.width = "0";
-    } else if (
+    }
+
+    //Checking if bar should be full
+    else if (
       eval(`data.habits.${habit}`).current >= eval(`data.habits.${habit}`).max
     ) {
       eval(`${habit}Progress`).style.width = "100%";
-    } else {
+    }
+
+    //Checking if streak needs to be added, if so only once for that day
+    else if (
+      eval(`data.habits.${habit}`).max -
+        eval(`data.habits.${habit}`).current ===
+      1
+    ) {
+      incrementStreaks(data, habit);
+      eval(`${habit}Progress`).style.width = ratio;
+    }
+    //Adjusting width of bar if not 0 or 100
+    else {
       eval(`${habit}Progress`).style.width = ratio;
     }
     updatingHabitText(data, habit);
+    updatingStreaks(data, habit);
   });
   updatingProfileHabit(ratioArray);
 }
@@ -238,6 +257,7 @@ function updatingHabitText(data, habit) {
 //Updating the best and worst streaks
 
 function updatingProfileHabit(ratioArray) {
+  ratioArray.pop();
   let max = Math.max(...ratioArray);
   let min = Math.min(...ratioArray);
 
@@ -256,6 +276,41 @@ function updatingProfileHabit(ratioArray) {
   };
   bestHabit.textContent = returnHabit(maxIndex);
   worstHabit.textContent = returnHabit(minIndex);
+}
+
+//Adding to streaks and other effects
+
+async function incrementStreaks(data, habit) {
+  let userData = await getAllData(currentUser());
+
+  if (eval(`userData[0].streaks.${habit}.max`) != true) {
+    let user = currentUser();
+    const options = {
+      method: "PATCH",
+      body: JSON.stringify({
+        streaks: habit,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    };
+
+    await fetch(`http://localhost:5005/habits/streaks/${user}`, options);
+  }
+}
+
+//Adding streak pictures
+
+function updatingStreaks(data, habit) {
+  let streakBox = document.querySelector(`.${habit}-streak-box`);
+  streakBox.innerHTML = "";
+  let numberOfStreaks = eval(`data.streaks.${habit}`).current;
+  let streakStr = `<img
+  src="./assets/images/rocket.png"
+  alt="Streak symbol"
+  class="streak-image"
+/>`;
+  streakBox.insertAdjacentHTML("afterbegin", streakStr.repeat(numberOfStreaks));
 }
 
 //All moving parts

@@ -201,7 +201,7 @@ p {
 
 .new-weekly-habit-selection {
   position: absolute;
-  width: fit-content;
+  width: 17rem;
   left: 15rem;
   background-color: $white;
   padding: 1rem;
@@ -293,6 +293,7 @@ p {
 }
 
 .habit-plus:active::after {
+  transform: scale(1.2);
 }
 .habit-tick {
   width: 10%;

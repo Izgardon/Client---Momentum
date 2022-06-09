@@ -32,7 +32,6 @@ let projectsText = document.querySelector(".projects-text");
 
 let habitArray = ["code", "water", "outdoors", "projects"];
 
-let date;
 //Getting current username of logged in
 
 function currentUser() {
@@ -65,14 +64,37 @@ function logout() {
 //Loading all data on page load
 
 window.addEventListener("load", async () => {
-  date = new Date().toLocaleDateString("en-GB");
-  console.log(date);
-  let userData = await getAllData(currentUser());
-  loadProfile(userData[0]);
+  date = new Date();
 
+  let userData = await getAllData(currentUser());
+  checkDate(userData[0].date, date);
+  loadProfile(userData[0]);
   checkForHabits(userData[0]);
   updatingHabits(userData[0], habitArray);
 });
+
+//Checking date to refresh or not
+
+async function checkDate(dataDate, currentDate) {
+  let oldDate = dataDate.slice(0, 10).split("-").reverse().join("/");
+  let newDate = currentDate.toLocaleDateString("en-GB").toString().slice(0, 10);
+  console.log(oldDate, "xxxxxxx", newDate);
+  if (oldDate != newDate) {
+    let user = currentUser();
+    const options = {
+      method: "PATCH",
+      body: JSON.stringify({
+        date: newDate,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    };
+
+    await fetch(`http://localhost:5005/habits/date/${user}`, options);
+    updatingHabits();
+  }
+}
 
 //Loading profile
 
@@ -198,7 +220,7 @@ function updatingHabits(data, arr) {
     ratioArray.push(parseInt(ratio));
 
     //Checks on bar (to see if full/empty/part way (dont want to divide by 0))
-    console.log(eval(`data.habits.${habit}`).max);
+
     if (eval(`data.habits.${habit}`).current == 0) {
       eval(`${habit}Progress`).style.width = "0";
     }

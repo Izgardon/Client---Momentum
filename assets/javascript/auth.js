@@ -52,6 +52,8 @@ loginBtn.addEventListener("click", (e) => {
   }
 });
 
+//Register function
+
 registerBtn.addEventListener("click", (e) => {
   registerError.textContent = "";
 
@@ -65,6 +67,8 @@ registerBtn.addEventListener("click", (e) => {
     requestReg(registerDetails);
   }
 });
+
+//Calling the user database to check if details match, then allowing login
 
 async function requestLogin(userDetails) {
   try {
@@ -89,7 +93,7 @@ async function requestLogin(userDetails) {
   }
 }
 
-//If user attempts login without reg
+//Registering an account request - adds it to database if username is unique
 async function requestReg(registerDetails) {
   try {
     const options = {
@@ -110,6 +114,8 @@ async function requestReg(registerDetails) {
     console.warn(err);
   }
 }
+
+//Storing username is localstorage so accessible on next page
 
 function login(data) {
   localStorage.setItem("username", data);

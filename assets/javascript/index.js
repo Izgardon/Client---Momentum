@@ -27,6 +27,11 @@ let codeText = document.querySelector(".code-text");
 let waterText = document.querySelector(".water-text");
 let outdoorsText = document.querySelector(".outdoors-text");
 let projectsText = document.querySelector(".projects-text");
+
+//Variables
+
+let habitArray = ["code", "water", "outdoors", "projects"];
+/* let ratioArray = []; */
 //Getting current username of logged in
 
 function currentUser() {
@@ -61,9 +66,9 @@ function logout() {
 window.addEventListener("load", async () => {
   let userData = await getAllData(currentUser());
   loadProfile(userData[0]);
-  console.log(userData[0]);
+
   checkForHabits(userData[0]);
-  updatingHabits(userData[0], ["code", "water", "outdoors", "projects"]);
+  updatingHabits(userData[0], habitArray);
 });
 
 //Loading profile
@@ -153,26 +158,6 @@ function checkForHabits(data) {
 
 //Incrementing Habits
 
-function updatingHabits(data, arr) {
-  arr.forEach((habit) => {
-    /* console.log(habit, eval(`data.habits.${habit}`)); */
-    if (eval(`data.habits.${habit}`).current == 0) {
-      eval(`${habit}Progress`).style.width = "0";
-    } else if (
-      eval(`data.habits.${habit}`).current >= eval(`data.habits.${habit}`).max
-    ) {
-      eval(`${habit}Progress`).style.width = "100%";
-    } else {
-      eval(`${habit}Progress`).style.width = `${
-        (eval(`data.habits.${habit}`).current /
-          eval(`data.habits.${habit}`).max) *
-        100
-      }%`;
-    }
-    updatingHabitText(data, habit);
-  });
-}
-
 //Buttons that work for each depending on ID, calls update function above
 
 incrementBtns.forEach((btn) => {
@@ -191,9 +176,39 @@ incrementBtns.forEach((btn) => {
 
     let response = await fetch(`http://localhost:5005/habits/${user}`, options);
     const data = await response.json();
-    updatingHabits(data, ["code", "water", "outdoors", "projects"]);
+    updatingHabits(data, habitArray);
   });
 });
+
+//Function that increments habits on the page - either on load or when called
+
+function updatingHabits(data, arr) {
+  let ratioArray = [];
+  arr.forEach((habit) => {
+    //Creating ratio array for profile
+
+    let ratio = `${
+      (eval(`data.habits.${habit}`).current /
+        eval(`data.habits.${habit}`).max) *
+      100
+    }%`;
+    ratioArray.push(parseInt(ratio));
+
+    //Checks on bar (to see if full/empty/part way (dont want to divide by 0))
+
+    if (eval(`data.habits.${habit}`).current == 0) {
+      eval(`${habit}Progress`).style.width = "0";
+    } else if (
+      eval(`data.habits.${habit}`).current >= eval(`data.habits.${habit}`).max
+    ) {
+      eval(`${habit}Progress`).style.width = "100%";
+    } else {
+      eval(`${habit}Progress`).style.width = ratio;
+    }
+    updatingHabitText(data, habit);
+  });
+  updatingProfileHabit(ratioArray);
+}
 
 //Updating the text above each habit
 
@@ -218,6 +233,29 @@ function updatingHabitText(data, habit) {
     let max = eval(`data.habits.${habit}`).max;
     projectsText.textContent = `You have completed ${current} out of ${max} projects this week!`;
   }
+}
+
+//Updating the best and worst streaks
+
+function updatingProfileHabit(ratioArray) {
+  let max = Math.max(...ratioArray);
+  let min = Math.min(...ratioArray);
+
+  let maxIndex = ratioArray.indexOf(max);
+  let minIndex = ratioArray.indexOf(min);
+  let returnHabit = (index) => {
+    if (index == 0) {
+      return "Coding code";
+    }
+    if (index == 1) {
+      return "Drinking water";
+    }
+    if (index == 2) {
+      return "Going outside";
+    }
+  };
+  bestHabit.textContent = returnHabit(maxIndex);
+  worstHabit.textContent = returnHabit(minIndex);
 }
 
 //All moving parts

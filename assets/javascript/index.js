@@ -5,6 +5,7 @@ let habitDate = document.querySelector(".date");
 let username = document.querySelector(".username");
 let bestHabit = document.querySelector(".best-habit");
 let worstHabit = document.querySelector(".worst-habit");
+let skillLevel = document.querySelector(".skill-level");
 
 //Adding or removing Habits
 let codeHabit = document.querySelector(".code");
@@ -68,7 +69,7 @@ window.onbeforeunload = function () {
 //Loading all data on page load
 
 window.addEventListener("load", async () => {
-  date = new Date();
+  let date = new Date();
 
   let userData = await getAllData(currentUser());
   checkDate(userData[0].date, date);
@@ -82,7 +83,7 @@ window.addEventListener("load", async () => {
 async function checkDate(dataDate, currentDate) {
   let oldDate = dataDate.slice(0, 10).split("-").reverse().join("/");
   let newDate = currentDate.toLocaleDateString("en-GB").toString().slice(0, 10);
-  console.log(oldDate, "xxxxxxx", newDate);
+
   if (oldDate != newDate) {
     let user = currentUser();
     const options = {
@@ -104,8 +105,19 @@ async function checkDate(dataDate, currentDate) {
 
 function loadProfile(data) {
   let dateText = new Date();
+  let skill = "";
+  if (data.habits.code.max == 2) {
+    skill = "Noob";
+  } else if (data.habits.code.max == 4) {
+    skill = "Beginner";
+  } else if (data.habits.code.max == 6) {
+    skill = "Knowledgeable";
+  } else if (data.habits.code.max == 8) {
+    skill = "Master";
+  }
   username.textContent = data.username;
   habitDate.textContent = dateText.toLocaleDateString("en-GB");
+  skillLevel.textContent = skill;
 }
 
 //Adding event listeners to new habit buttons

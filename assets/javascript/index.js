@@ -263,18 +263,18 @@ function updatingProfileHabit(ratioArray) {
 
   let maxIndex = ratioArray.indexOf(max);
   let minIndex = ratioArray.indexOf(min);
-  let returnHabit = (index) => {
-    if (index == 0) {
+  let returnHabit = (index, zeroCheck) => {
+    if (zeroCheck == 0) {
+      return "You haven't done anything!";
+    } else if (index == 0) {
       return "Coding code";
-    }
-    if (index == 1) {
+    } else if (index == 1) {
       return "Drinking water";
-    }
-    if (index == 2) {
+    } else if (index == 2) {
       return "Going outside";
     }
   };
-  bestHabit.textContent = returnHabit(maxIndex);
+  bestHabit.textContent = returnHabit(maxIndex, max);
   worstHabit.textContent = returnHabit(minIndex);
 }
 

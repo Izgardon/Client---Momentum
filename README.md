@@ -56,7 +56,7 @@ To test the fetch API we used a jest library `jest-fetch-mock`
 
 We launched our client on Netlify!
 
-- [Look at Momentum on Netlify](LINK)
+- [Look at Momentum on Netlify](https://momentum-fp.netlify.app/)
 
 ## The Process
 

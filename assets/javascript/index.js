@@ -61,6 +61,10 @@ function logout() {
   location.href = "index.html";
 }
 
+window.onbeforeunload = function () {
+  logout();
+};
+
 //Loading all data on page load
 
 window.addEventListener("load", async () => {

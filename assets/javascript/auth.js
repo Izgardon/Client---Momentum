@@ -60,6 +60,7 @@ registerBtn.addEventListener("click", (e) => {
       username: registerUsername.value,
       password: registerPassword.value,
       skill: skill.value,
+      date: new Date().toLocaleDateString("en-GB"),
     };
     requestReg(registerDetails);
   }

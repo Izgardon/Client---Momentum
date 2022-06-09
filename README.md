@@ -25,24 +25,11 @@ Momentum has the following functionalities:
 
 1. Navigate to the client-momentum folder
 2. Open a Terminal
-3. Enter  to run a local client which is connected to our heroku server
+3. Enter(FURTHER DETAILS REQUIRED) to run a local client which is connected to our heroku server
 
 ### Technologies
 
-https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
-- JavaScript
-- Live Server
-- Jest
-- Netlify
-- Google Fonts and Icons
-- Giphy API (limited to 42 posts per hour)
-
-###### Live Server
-
-You can access a live server of smallTalk but simply running the `dev` script. The live server takes advantage of the npm script `currently` to start the `watchify` bundler and a http-server.
-
-- Install: `npm i -D watchify concurrently http-server`
-- Script: `"dev": "concurrently \"watchify ./client/script.js -o bundle.js\" \"http-server\""`
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![SAAS](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white) ![Netlify](https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white) ![Jest](https://img.shields.io/badge/Jest-323330?style=for-the-badge&logo=Jest&logoColor=white)
 
 ###### Jest
 
@@ -67,21 +54,21 @@ To test the fetch API we used a jest library `jest-fetch-mock`
 
 We launched our client on Netlify!
 
-- [Look at smallTalk on Netlify](https://cool-rolypoly-62fa4c.netlify.app)
+- [Look at Momentum on Netlify](LINK)
 
 ## The Process
 
 1. We first set up a kanban board on the github projects tab, where we thought about the different functionalities we would need to implement and then distributed them between us
-2. We decided that our journal should take only a post text to begin with and then each post would have the ability to add more detail with a new form created on each post.
+2. We then further made use of Excalidraw and Balsamiq to sketch out designs for our pages and schema. .
 3. 2 team members tackled the client side, creating a design and making some skeleton pseudo code functions.
 4. A branch was made for each team member to work on as a developer with a parent staging branch which we all pushed to.
-5. 2 team members tackled the server side, see the -[smallTalk_Server Repo](https://github.com/GMillerMc/smallTalk_Server)
+5. 2 team members tackled the server side, see the -[Momentum_Server Repo](https://github.com/Izgardon/server-momentum)
 6. Once the website had a basic HTML we started connecting the client to the server
-7. The client was deployed on Netlify (see above for the link to smallTalk)
-8. We completed the functionality of our journal so we could send and recieve more data from the server.
-9. Began testing on our client side
-10. Finished up the styling of the webpage
-11. Push our final changes to the main branch of github
+7. The client was deployed on Netlify (see above for the link to Momentum)
+8. We completed the functionality of our login and habits so we could send and recieve data from our database through the server.
+9. Began testing on our client side.
+10. Finished up the styling of the webpage.
+11. Push our final changes to the main branch of github.
 
 ### Wins
 

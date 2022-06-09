@@ -18,4 +18,32 @@ describe('index.html', () => {
         let title = document.querySelector('title');
         expect(title.textContent).toContain('Momentum');
     })
+
 })
+
+describe('login form', ()=>{
+    test('form exists', ()=>{
+        let form = document.querySelector('form')
+        expect(form).toBeTruthy()
+    })
+
+    test('form has input for name', ()=>{
+        let inputName = document.querySelector(".login")
+        expect(inputName).toBeTruthy()
+        //expect(inputName.type).toEqual("text")//
+    })
+    test('form has input for password', ()=>{
+        let inputPass = document.querySelector("#login-password")
+        expect(inputPass).toBeTruthy()
+        expect(inputPass.type).toEqual('password')
+    })
+    test('form has submit button', ()=>{
+        let submit = document.querySelector(".login-form-btn")
+        expect(submit).toBeTruthy()
+        expect(submit.type).toEqual('submit')
+        
+    })
+})
+
+
+

@@ -4,7 +4,9 @@ Getting good at anything, let alone coding, requires dedication and practice but
 
 What if you could keep track of your goals, get rewarded with streaks and keep up your momentum to achieve your coding goals? Download Momentum today!
 
-![SiteHomePage](./)
+![SiteLoginPage](./assets/images/Screenshot%202022-06-09%20at%2010.28.18.png)
+
+![SiteUserProfile](./assets/images/Screenshot%202022-06-09%20at%2010.30.36.png)
 
 ## About Momentum
 

@@ -72,42 +72,41 @@ We launched our client on Netlify!
 
 ### Wins
 
-- Added a unique feature that allows you to preview your gif before sending it
-- Managed to implement Giphy as part of our comment section so you can react with a gif.
+- Added login and Register features.
+- Prevent a user from signing up with the same name.
+- Added salting and hashing to passwords to enable secure storage.
+- Skill level feature which multiplies the amount needed to complete a habit.
 - Testing on the server side had an average of 70% coverage.
-- Implemented a random name generator for each post.
+- Habits selected will persist after refresh.
+- Adding incrementation feature which queries and updates the specific habit in the database.
 - Successfully post the input fields to the server side that is on the herokuapp
-- On the DOM being loaded, the previous posts are fetched from the server and displayed.
-- Each post has there own ID so their content can be collected.
+- On the DOM being loaded, the user details are fetched and displayed on the profile page.
+- Each user is linked to their habits with a unique name.
 
-- **SOLVED** The index.html file has to be a top level file and now is deployed on Netlify.
-- **SOLVED** Managed to add the new post in the post fetch method which invokes the createPost function.
-- **SOLVED** When creating the elements, we added and event listener to them so we could target them in the after the DOM is loaded.
+- **SOLVED** Incrementing habits.
+- **SOLVED** Adding Streaks.
+
 
 ### Challenges
 
-- Testing on the client side was poor (roughly XX% coverage).
-- We attempted to use a bundler Watchify so we could keep our data seperate but had a few issues using the require method.
+- Testing on the client side and mocking our database for testing.
 
-- ~~Netlify failing to load (may be to do with html file not being at the top)~~ **SOLVED**
-- ~~Issue when posting new posts, that they do not appear until the page refreshes~~ **SOLVED**
-- ~~We could not target elements created when a new post was created~~ **SOLVED**
+
+- ~~Netlify failing to load (may be to do with html file not being at the top).~~ **SOLVED**
+- ~~Issue when posting new habits, they dissapeared on page refresh.~~ **SOLVED**
+
 
 ### Bugs
 
-- Random name gets reassigned each time the page is reloaded (Character Quirk, could be solved by saving the name and adding it to the server. We kept it in as it is a fun way for the posts to remain anonymous)
-
-- ~~Each post gets appended to the bottom of the feed~~ **SOLVED**
-
-- No other bugs we can find (Please inform us if you find any!)
+- No bugs we can find (Please inform us if you find any!)
 
 ### Future Features
 
-- The top liked posts get pushed to the top of the journal feed
-- The random Giphy button shows a selection of the trending gif where you can choose one to post
-- An encryption - since it is an anonymous
-- Multiple feeds for different topics
-- Membership feed
+- Further security with JWT.
+- Track more habits.
+- Membership to allow premium benefits such as learning resources.
+- Streak rewards.
+- Integration with fitness trackers and mobile.
 
 ### Licence
 

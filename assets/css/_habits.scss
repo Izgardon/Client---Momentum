@@ -6,6 +6,7 @@ $purple: #8017b9;
 
 .logo {
   height: 100px;
+  cursor: pointer;
 }
 
 .user-details {
@@ -249,12 +250,14 @@ p {
   position: relative;
   background-color: transparent;
   border: 1px solid $grey;
-  height: 35px;
+  height: 33px;
 }
 .progress-bar-completion {
-  width: 12.5%;
+  width: 0;
+  position: relative;
   height: 100%;
   background-color: $purple;
+  transition: width 2s;
 }
 .progress-bar-text {
   font-size: 0.75rem;

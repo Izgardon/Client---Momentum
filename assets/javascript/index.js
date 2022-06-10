@@ -43,7 +43,9 @@ function currentUser() {
 
 async function getAllData(user) {
   try {
-    const response = await fetch(`http://localhost:5005/habits/${user}`);
+    const response = await fetch(
+      `https://momentum-appnodejs.herokuapp.com/habits/${user}`
+    );
     const data = await response.json();
 
     return data;
@@ -95,7 +97,10 @@ async function checkDate(oldDate, currentDate) {
       },
     };
 
-    await fetch(`http://localhost:5005/habits/date/${user}`, options);
+    await fetch(
+      `https://momentum-appnodejs.herokuapp.com/habits/date/${user}`,
+      options
+    );
     updatingHabits();
   }
 }
@@ -178,7 +183,10 @@ async function addHabit(habit) {
     },
   };
 
-  await fetch(`http://localhost:5005/habits/${user}`, options);
+  await fetch(
+    `https://momentum-appnodejs.herokuapp.com/habits/${user}`,
+    options
+  );
 }
 
 function checkForHabits(data) {
@@ -214,7 +222,10 @@ incrementBtns.forEach((btn) => {
       },
     };
 
-    let response = await fetch(`http://localhost:5005/habits/${user}`, options);
+    let response = await fetch(
+      `https://momentum-appnodejs.herokuapp.com/habits/${user}`,
+      options
+    );
     const data = await response.json();
     updatingHabits(data, habitArray);
   });
@@ -332,7 +343,10 @@ async function incrementStreaks(data, habit) {
       },
     };
 
-    await fetch(`http://localhost:5005/habits/streaks/${user}`, options);
+    await fetch(
+      `https://momentum-appnodejs.herokuapp.com/habits/streaks/${user}`,
+      options
+    );
   }
 }
 

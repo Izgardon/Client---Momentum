@@ -77,7 +77,10 @@ async function requestLogin(userDetails) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userDetails),
     };
-    const r = await fetch(`http://localhost:5005/auth/login`, options);
+    const r = await fetch(
+      `https://momentum-appnodejs.herokuapp.com/auth/login`,
+      options
+    );
     const data = await r.json();
     if (data.err) {
       loginError.textContent = "Incorrect username or password";
@@ -101,7 +104,10 @@ async function requestReg(registerDetails) {
       headers: { "content-Type": "application/json" },
       body: JSON.stringify(registerDetails),
     };
-    const r = await fetch(`http://localhost:5005/auth/register`, options);
+    const r = await fetch(
+      `https://momentum-appnodejs.herokuapp.com/auth/register`,
+      options
+    );
     const data = await r.json();
     if (data.err) {
       registerError.textContent = "Username already exists";

@@ -62,17 +62,17 @@ function logout() {
   location.href = "index.html";
 }
 
-window.onbeforeunload = function () {
+/* window.onbeforeunload = function () {
   logout();
-};
+}; */
 
 //Loading all data on page load
 
 window.addEventListener("load", async () => {
   let date = new Date();
-
   let userData = await getAllData(currentUser());
-  checkDate(userData[0].date, date);
+
+  await checkDate(userData[0].date, date);
   loadProfile(userData[0]);
   checkForHabits(userData[0]);
   updatingHabits(userData[0], habitArray);
@@ -80,8 +80,7 @@ window.addEventListener("load", async () => {
 
 //Checking date to refresh or not
 
-async function checkDate(dataDate, currentDate) {
-  let oldDate = dataDate.slice(0, 10).split("-").reverse().join("/");
+async function checkDate(oldDate, currentDate) {
   let newDate = currentDate.toLocaleDateString("en-GB").toString().slice(0, 10);
 
   if (oldDate != newDate) {

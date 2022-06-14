@@ -78,7 +78,7 @@ async function requestLogin(userDetails) {
       body: JSON.stringify(userDetails),
     };
     const r = await fetch(
-      `https://momentum-appnodejs.herokuapp.com/auth/login`,
+      `https://momentum-will.herokuapp.com/auth/login`,
       options
     );
     const data = await r.json();
@@ -105,7 +105,7 @@ async function requestReg(registerDetails) {
       body: JSON.stringify(registerDetails),
     };
     const r = await fetch(
-      `https://momentum-appnodejs.herokuapp.com/auth/register`,
+      `https://momentum-will.herokuapp.com/auth/register`,
       options
     );
     const data = await r.json();

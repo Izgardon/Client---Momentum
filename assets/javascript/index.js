@@ -44,7 +44,7 @@ function currentUser() {
 async function getAllData(user) {
   try {
     const response = await fetch(
-      `https://momentum-appnodejs.herokuapp.com/habits/${user}`
+      `https://momentum-will.herokuapp.com/habits/${user}`
     );
     const data = await response.json();
 
@@ -83,7 +83,7 @@ window.addEventListener("load", async () => {
 //Checking date to refresh or not
 
 async function checkDate(oldDate, currentDate) {
-  console.log(`https://momentum-appnodejs.herokuapp.com/habits/date/${user}`);
+  console.log(`https://momentum-will.herokuapp.com/habits/date/${user}`);
   let newDate = currentDate.toLocaleDateString("en-GB").toString().slice(0, 10);
 
   if (oldDate != newDate) {
@@ -99,7 +99,7 @@ async function checkDate(oldDate, currentDate) {
     };
 
     await fetch(
-      `https://momentum-appnodejs.herokuapp.com/habits/date/${user}`,
+      `https://momentum-will.herokuapp.com/habits/date/${user}`,
       options
     );
     updatingHabits();
@@ -184,10 +184,7 @@ async function addHabit(habit) {
     },
   };
 
-  await fetch(
-    `https://momentum-appnodejs.herokuapp.com/habits/${user}`,
-    options
-  );
+  await fetch(`https://momentum-will.herokuapp.com/habits/${user}`, options);
 }
 
 function checkForHabits(data) {
@@ -224,7 +221,7 @@ incrementBtns.forEach((btn) => {
     };
 
     let response = await fetch(
-      `https://momentum-appnodejs.herokuapp.com/habits/${user}`,
+      `https://momentum-will.herokuapp.com/habits/${user}`,
       options
     );
     const data = await response.json();
@@ -340,7 +337,7 @@ async function incrementStreaks(data, habit) {
     };
 
     await fetch(
-      `https://momentum-appnodejs.herokuapp.com/habits/streaks/${user}`,
+      `https://momentum-will.herokuapp.com/habits/streaks/${user}`,
       options
     );
   }

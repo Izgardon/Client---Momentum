@@ -52,6 +52,8 @@ loginBtn.addEventListener("click", (e) => {
   }
 });
 
+//Register function
+
 registerBtn.addEventListener("click", (e) => {
   registerError.textContent = "";
 
@@ -60,10 +62,13 @@ registerBtn.addEventListener("click", (e) => {
       username: registerUsername.value,
       password: registerPassword.value,
       skill: skill.value,
+      date: new Date().toLocaleDateString("en-GB"),
     };
     requestReg(registerDetails);
   }
 });
+
+//Calling the user database to check if details match, then allowing login
 
 async function requestLogin(userDetails) {
   try {
@@ -72,7 +77,10 @@ async function requestLogin(userDetails) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userDetails),
     };
-    const r = await fetch(`http://localhost:5005/auth/login`, options);
+    const r = await fetch(
+      `https://momentum-will.herokuapp.com/auth/login`,
+      options
+    );
     const data = await r.json();
     if (data.err) {
       loginError.textContent = "Incorrect username or password";
@@ -88,7 +96,7 @@ async function requestLogin(userDetails) {
   }
 }
 
-//If user attempts login without reg
+//Registering an account request - adds it to database if username is unique
 async function requestReg(registerDetails) {
   try {
     const options = {
@@ -96,7 +104,10 @@ async function requestReg(registerDetails) {
       headers: { "content-Type": "application/json" },
       body: JSON.stringify(registerDetails),
     };
-    const r = await fetch(`http://localhost:5005/auth/register`, options);
+    const r = await fetch(
+      `https://momentum-will.herokuapp.com/auth/register`,
+      options
+    );
     const data = await r.json();
     if (data.err) {
       registerError.textContent = "Username already exists";
@@ -109,6 +120,8 @@ async function requestReg(registerDetails) {
     console.warn(err);
   }
 }
+
+//Storing username is localstorage so accessible on next page
 
 function login(data) {
   localStorage.setItem("username", data);

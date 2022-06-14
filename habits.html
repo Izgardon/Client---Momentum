@@ -40,9 +40,12 @@
               >No user - please Logout and Login</span
             >
           </div>
+          <div>Skill: <span class="white skill-level"></span></div>
           <div>Date: <span class="white date"></span></div>
-          <div>Best habit today: <span class="white best-habit">?</span></div>
-          <div>Worst habit today: <span class="white worst-habit">?</span></div>
+          <div>Best habit today: <span class="white best-habit">N/A</span></div>
+          <div>
+            Worst habit today: <span class="white worst-habit">N/A</span>
+          </div>
         </div>
       </div>
       <div class="habits">
@@ -70,19 +73,19 @@
           </div>
           <div class="habit-info">
             <div class="progress-bar">
-              <div class="progress-bar-completion"></div>
-              <div class="progress-bar-text">1 of 6 hours completed</div>
-              <div class="habit-plus"></div>
+              <div class="progress-bar-completion code-progress"></div>
+              <div class="progress-bar-text code-text"></div>
+              <div class="habit-plus" id="code"></div>
             </div>
           </div>
           <div class="streak">
             <h4>Streak:</h4>
-            <div class="streak-box"></div>
+            <div class="code-streak-box"></div>
           </div>
         </div>
         <div class="habit hidden left water">
           <div class="flex">
-            <h3>Water drunk</h3>
+            <h3>Glasses of water</h3>
             <img
               src="./assets/images/water.png"
               alt="Code symbol"
@@ -91,35 +94,35 @@
           </div>
           <div class="habit-info">
             <div class="progress-bar">
-              <div class="progress-bar-completion"></div>
-              <div class="progress-bar-text">1 of 6 glasses drunk</div>
-              <div class="habit-plus"></div>
+              <div class="progress-bar-completion water-progress"></div>
+              <div class="progress-bar-text water-text"></div>
+              <div class="habit-plus" id="water"></div>
             </div>
           </div>
           <div class="streak">
             <h4>Streak:</h4>
-            <div class="streak-box"></div>
+            <div class="water-streak-box"></div>
           </div>
         </div>
         <div class="habit hidden left outdoor">
           <div class="flex">
             <h3>Time outside</h3>
             <img
-              src="./assets/images/code.png"
+              src="./assets/images/outdoors.png"
               alt="Code symbol"
               class="habit-image"
             />
           </div>
           <div class="habit-info">
             <div class="progress-bar">
-              <div class="progress-bar-completion"></div>
-              <div class="progress-bar-text">0.5 of 2 hours completed</div>
-              <div class="habit-plus"></div>
+              <div class="progress-bar-completion outdoors-progress"></div>
+              <div class="progress-bar-text outdoors-text"></div>
+              <div class="habit-plus" id="outdoors"></div>
             </div>
           </div>
           <div class="streak">
             <h4>Streak:</h4>
-            <div class="streak-box"></div>
+            <div class="outdoors-streak-box"></div>
           </div>
         </div>
       </div>
@@ -129,6 +132,7 @@
           <div class="new-weekly-btn">+</div>
           <div class="new-weekly-habit-line out-wide-line"></div>
           <div class="new-weekly-habit-selection out-wide">
+            <p>What do you want to do?</p>
             <li class="new-daily-habit-choice project-choice">
               Finish projects
             </li>
@@ -138,21 +142,21 @@
           <div class="flex">
             <h3>Projects completed</h3>
             <img
-              src="./assets/images/code.png"
+              src="./assets/images/projects.png"
               alt="Code symbol"
               class="habit-image"
             />
           </div>
           <div class="habit-info">
             <div class="progress-bar">
-              <div class="progress-bar-completion"></div>
-              <div class="progress-bar-text">1 of 6 hours completed</div>
-              <div class="habit-plus"></div>
+              <div class="progress-bar-completion projects-progress"></div>
+              <div class="progress-bar-text projects-text"></div>
+              <div class="habit-plus" id="projects"></div>
             </div>
           </div>
           <div class="streak">
             <h4>Streak:</h4>
-            <div class="streak-box"></div>
+            <div class="projects-streak-box"></div>
           </div>
         </div>
       </div>

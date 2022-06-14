@@ -6,6 +6,7 @@ $purple: #8017b9;
 
 .logo {
   height: 100px;
+  cursor: pointer;
 }
 
 .user-details {
@@ -36,7 +37,7 @@ $purple: #8017b9;
   color: $purple;
 }
 .user-profile-details > div {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .habits-page {
@@ -200,7 +201,7 @@ p {
 
 .new-weekly-habit-selection {
   position: absolute;
-  width: fit-content;
+  width: 17rem;
   left: 15rem;
   background-color: $white;
   padding: 1rem;
@@ -249,12 +250,14 @@ p {
   position: relative;
   background-color: transparent;
   border: 1px solid $grey;
-  height: 35px;
+  height: 33px;
 }
 .progress-bar-completion {
-  width: 12.5%;
+  width: 0;
+  position: relative;
   height: 100%;
   background-color: $purple;
+  transition: width 2s;
 }
 .progress-bar-text {
   font-size: 0.75rem;
@@ -290,6 +293,7 @@ p {
 }
 
 .habit-plus:active::after {
+  transform: scale(1.2);
 }
 .habit-tick {
   width: 10%;
@@ -298,6 +302,15 @@ p {
 .habit-image {
   width: 30px;
 
+  margin-left: 1rem;
+}
+.streak {
+  display: flex;
+
+  align-items: center;
+}
+.streak-image {
+  width: 30px;
   margin-left: 1rem;
 }
 

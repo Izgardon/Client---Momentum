@@ -74,7 +74,7 @@ window.addEventListener("load", async () => {
   let date = new Date();
   let userData = await getAllData(currentUser());
 
-  await checkDate(userData[0].date, date);
+  /* await checkDate(userData[0].date, date); */
   loadProfile(userData[0]);
   checkForHabits(userData[0]);
   updatingHabits(userData[0], habitArray);
@@ -83,6 +83,7 @@ window.addEventListener("load", async () => {
 //Checking date to refresh or not
 
 async function checkDate(oldDate, currentDate) {
+  console.log(`https://momentum-appnodejs.herokuapp.com/habits/date/${user}`);
   let newDate = currentDate.toLocaleDateString("en-GB").toString().slice(0, 10);
 
   if (oldDate != newDate) {
@@ -237,27 +238,22 @@ function updatingHabits(data, arr) {
   let ratioArray = [];
   arr.forEach((habit) => {
     //Creating ratio array for profile
-
     let ratio = `${
       (eval(`data.habits.${habit}`).current /
         eval(`data.habits.${habit}`).max) *
       100
     }%`;
     ratioArray.push(parseInt(ratio));
-
     //Checks on bar (to see if full/empty/part way (dont want to divide by 0))
-
     if (eval(`data.habits.${habit}`).current == 0) {
       eval(`${habit}Progress`).style.width = "0";
     }
-
     //Checking if bar should be full
     else if (
       eval(`data.habits.${habit}`).current >= eval(`data.habits.${habit}`).max
     ) {
       eval(`${habit}Progress`).style.width = "100%";
     }
-
     //Checking if streak needs to be added, if so only once for that day
     else if (
       eval(`data.habits.${habit}`).max -
